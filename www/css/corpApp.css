@@ -104,14 +104,37 @@ body {
 	background-image: url("../img/menu_icon_peoplefinder.png");
 }
 
+.menu a.icon-skillfinder {
+	background-image: url("../img/menu_icon_skillfinder.png");
+}
+
+.menu a.icon-presentation {
+	background-image: url("../img/menu_icon_presentation.png");
+}
+
 /* footer */
 .footer{
 	
 }
 
-.footer .button{
+.footer .button {
 	display: block;
 	width:100%;
 	height:100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position:center;
+}
+
+.footer .button-back {
+	background-image: url("../img/footer_back.png");
+}
+
+.footer .button-logoff {
+	background-image: url("../img/footer_logoff.png");
+}
+
+.footer .button-menu {
+	background-image: url("../img/footer_menu.png");
 }
     
