@@ -1,4 +1,4 @@
-var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.contact']);
+var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.contact', 'corpApp.departments']);
 
 
 //routing
@@ -17,7 +17,7 @@ corpApp.config(['$routeProvider',
 	corpApp.controller('HomeController', function($scope, $http) {
 	
 		$scope.test = "test";
-		$scope.modules = ["contact", "expenses", "buddy"];
+		$scope.modules = ["contact", "expenses", "buddy", "departments"];
 	 
 	});
 corpApp.controller('ModuleController', function($scope, $http) {
