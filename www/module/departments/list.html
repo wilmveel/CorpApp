@@ -1,3 +1,18 @@
 <h1>Contact List</h1>
 
-{{list}}
+<ul class="list-group" ng-repeat="item in list">
+	<li class="list-group-item row">
+		<div class="col-xs-6">
+			<h3 class="row">{{item.department}}</h3>
+			<div class="row">
+				<div class="glyphicon glyphicon-phone col-xs-6"></div>
+				<div class="glyphicon glyphicon-plus-sign col-xs-6"></div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			{{item.telephone}}
+			{{item.email}}
+			{{item.roomnumber}}
+		</div>
+	</li>
+</ul>
