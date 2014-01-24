@@ -24,7 +24,7 @@ body {
 
 @font-face {
     font-family: helveticaneueltstd-ultlt-webfont;
-    src: url("../fonts/helveticaneueltstd-ultlt-webfont.ttf") format("truetype");
+    src: url("../fonts/HelveticaNeueLTStd-UltLt.otf") format("truetype");
 }
 /* block */
 .block {
