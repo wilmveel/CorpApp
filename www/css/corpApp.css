@@ -9,6 +9,7 @@
 html,
 body {
 	height: 100%;
+	background-color: #d3d3d3;
 /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -76,6 +77,7 @@ body {
 .date{
 	font-family: helveticaneueltstd-ultlt-webfont, Helvetica, Verdana, Sans-Serif;	
 }
+
 .header .date .day{
 	display: block;
 	text-align: right;
@@ -84,12 +86,12 @@ body {
 	font-size: 24px;
 }
 
-
 /* main */
 .main {
-	border: 2px solid #d3d3d3;
 	padding-top: 75px;
 	padding-bottom: 75px;
+	border: 2px solid #d3d3d3;
+	border-width: 0px 4px;
 }
 
 
@@ -153,12 +155,55 @@ body {
 /* footer */
 .title {
 	height:75px;
-}
-
-.title .text{
 	line-height:75px;
 	font-size: 24px;
 	text-transform:uppercase;
 	color: #d3d3d3;
+	background-image: url("../img/menu_icon.png");
+	background-repeat: no-repeat;
+	background-size: 75px;
+	background-position:center right;
+	background-color: #FFFFFF;
+	padding: 0px 10px;
+	border-bottom: 4px solid #d3d3d3;
 }
+
+.title-peoplefinder {
+	background-image: url("../img/module_icon_peoplefinder.png");
+}
+
+/* list */
+.list{
+
+}
+
+.contact {
+	background:#FFF;
+	height:79px;
+	border-bottom: 4px solid #d3d3d3;
+}
+
+.contact .photo{
+	float:left;
+}
+
+.contact .name{
+	font-size:24px;
+	padding: 5px 85px;
+	display: block;
+	color: #003d86;
+}
+
+.contact .phone{
+	display: block;
+	margin: 0px 85px;
+	color: #003d86;
+}
+
+/* search */
+
+.search{
+	border-bottom: 4px solid #d3d3d3;
+}
+
     

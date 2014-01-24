@@ -1,20 +1,24 @@
-<input type="text" ng-model="searchText" ng-change="elasticSearch()" class="search-query" placeholder="Search"/>
-<button ng-click="search()">Search</button>
-<table>
-    <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Phone Number</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in list">
-        <td><a href="#/module/PeopleFinder/Details/{{item._id}}">{{item.firstname}}</a></td>
-        <td>{{item.name}}</td>
-        <td><a ng-href="tel:{{item.mobile}}">{{item.mobile}}</a></td>
-        <td><image src="icon.png" height="20" width="20"/></td>
-    </tr>
-    </tbody>
-    <a href="#/home">Back</a>
-</table>
+<div class="row">
+	<div class="title title-peoplefinder">
+		People Finder</div>
+	</div>
+</div>
+
+<div class="row">
+	<form>
+		<div class="input-group search">
+			<input type="text" class="form-control" placeholder="Keyword" ng-model="searchText" ng-change="elasticSearch()">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="search()">Search</button>
+			</span>
+		</div><!-- /input-group -->
+	</form>
+</div>
+
+<div class="row">
+	<div class="contact" ng-repeat="item in list">
+		<img class="photo" ng-src="http://www.familieslager.nl/capathon/{{item.photo}}" width="75px" height="75px" />
+		<a class="name" ng-href="tel:{{item.mobile}}">{{item.firstname}} {{item.lastname}}</a>
+		<a class="phone" ng-href="tel:{{item.mobile}}">{{item.telephone}}</a>
+	</div>
+</div>
