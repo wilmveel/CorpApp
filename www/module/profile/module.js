@@ -11,38 +11,26 @@ profileModule.config(['$routeProvider',
 	}
 ]);
 
-profileModule.controller('ProfileController', function($scope, $http) {
+profileModule.controller('ProfileController', function($scope, $http, Loginservice) {
 			$scope.status = {};
+			$scope.available = "";
+			$scope.notavailable = "";
 			//$scope.list = [];
 			
 			//$scope.list = $http.get("http://192.168.101.192:8080/searchcontact/Alejandro");
-			
-			$scope.list = [
-			  {
-				"_id": "52e2379d311d27494ac29707",
-				"firstname": "Alex",
-				"tussenvoegsel": "",
-				"name": "Aalberts",
-				"Sector": "T",
-				"Practice": "T10",
-				"Email": "ALEX.AALBERTS@CAPGEMINI.COM",
-				"Grip": 90789,
-				"mobile": "0654233881",
-				"Client": "ING",
-				"Residence": "Amsterdam",
-				"Worklocation": "Amsterdam",
-				"Available": "11-1-2014",
-				"Expertise": [
-				  "Cobol",
-				  "Java",
-				  "MongoDB",
-				  "AngularJS"
-				]
-			  }
-			  
-			  
-
-]
+				
+			$http({method: 'GET', url: 'http://192.168.101.192:8080/searchcontact/' + Loginservice.username}).
+	        success(function(data, status, headers, config) {
+	            // this callback will be called asynchronously
+	            // when the response is available
+	            $scope.list = data;
+	    
+	        }).
+	        error(function(data, status, headers, config) {
+	            // called asynchronously if an error occurs
+	            // or server returns response with an error status.
+	            $scope.list = ["Error"];
+	        });
 
 $scope.edit = function(){
 		console.log("Edit profile: ", $scope.list[0]);
@@ -56,7 +44,7 @@ $scope.edit = function(){
 				$scope.status = false;
 				console.log($scope.status);
 			});
-	}
+	};
 	
 	
 	

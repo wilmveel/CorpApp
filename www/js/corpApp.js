@@ -13,12 +13,22 @@ corpApp.config(['$routeProvider',
         controller: 'HomeController'
       }).
       otherwise({
-        redirectTo: '/home'
+        redirectTo: '/login'
       });
   }]);
   
-corpApp.controller('LoginController', function($scope, $http) {
+corpApp.controller('LoginController', function($scope, $http, Loginservice) {
 	
+	$scope.login = function(){
+		Loginservice.username = $scope.username;
+	};
+	
+});
+
+corpApp.service('Loginservice', function () {
+
+    var username;
+
 });
 
 corpApp.controller('HomeController', function($scope, $http) {
