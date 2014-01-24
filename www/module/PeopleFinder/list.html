@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="item in list">
-        <td>{{item.firstname}}</td>
+        <td><a href="#/module/PeopleFinder/Details/{{item._id}}">{{item.firstname}}</a></td>
         <td>{{item.name}}</td>
         <td><a ng-href="tel:{{item.mobile}}">{{item.mobile}}</a></td>
         <td><image src="icon.png" height="20" width="20"/></td>
