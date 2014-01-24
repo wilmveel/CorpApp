@@ -12,7 +12,11 @@ contactModule.config(['$routeProvider',
 ]);
 
 contactModule.controller('PeopleFinderController', function($scope, $http) {
-    $http({method: 'GET', url: 'http://192.168.101.192:8080/contact/Aalberts'}).
+
+
+    $scope.search = function(){
+
+    $http({method: 'GET', url: 'http://192.168.101.192:8080/contact/'+$scope.searchText}).
         success(function(data, status, headers, config) {
             // this callback will be called asynchronously
             // when the response is available
@@ -23,5 +27,7 @@ contactModule.controller('PeopleFinderController', function($scope, $http) {
             // or server returns response with an error status.
             $scope.list = ["Error"];
         });
+    };
+
 
 });

@@ -1,3 +1,14 @@
-<h1>Contact List</h1>
-
-{{list}}
+<input type="text" ng-model="searchText" class="search-query" placeholder="Search"/>
+<button ng-click="search()">Search</button>
+<table>
+    <thead>
+    <tr>
+        <th>Project</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in list">
+        <td>{{item}}</td>
+    </tr>
+    </tbody>
+</table>
