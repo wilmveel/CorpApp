@@ -24,7 +24,11 @@ body {
 
 @font-face {
     font-family: helveticaneueltstd-ultlt-webfont;
-    src: url("../fonts/HelveticaNeueLTStd-UltLt.otf") format("truetype");
+    src: url("../fonts/HelveticaNeueLTStd-UltLt.otf") format("opentype");
+}
+@font-face {
+	font-family: helveticaltstd-light-webfont;
+	src: url("../fonts/helveticaltstd-light-webfont.ttf") format("truetype");
 }
 /* block */
 .block {
@@ -66,9 +70,12 @@ body {
 }
 
 .header .date {
-	font-family: helveticaneueltstd-ultlt-webfont, Helvetica, Verdana, Sans-Serif;	
+	
 }
 
+.date{
+	font-family: helveticaneueltstd-ultlt-webfont, Helvetica, Verdana, Sans-Serif;	
+}
 .header .date .day{
 	display: block;
 	text-align: right;
