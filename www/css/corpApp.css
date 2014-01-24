@@ -22,13 +22,13 @@ body {
 	height: auto !important;
 	height: 100%;
 	/* Negative indent footer by it's height */
-	margin: 0 auto -60px;
+	margin: 0 auto -75px;
 }
 
 /* Set the fixed height of the footer here */
 #push,
 #footer {
-	height: 60px;
+	height: 75px;
 }
 #footer {
 	background-color: #f5f5f5;
@@ -62,6 +62,7 @@ body {
 /* header */
 .header {
 	border: 2px solid #d3d3d3;
+	border-bottom-width: 0px;
 }
 
 .header .block {
@@ -72,6 +73,7 @@ body {
 	background-image: url("../img/logo.png");
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position:center;
 }
 
 .header .date {
@@ -83,7 +85,7 @@ body {
 	text-align: right;
 	height:50%;
 	color:#FFF;
-	font-size:
+	font-size: 24px;
 }
 
 /* main */
