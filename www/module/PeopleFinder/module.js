@@ -5,9 +5,9 @@ contactModule.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/module/PeopleFinder', {
-                templateUrl: 'module/PeopleFinder/list.html',
-                controller: 'PeopleFinderController'
-            })
+            templateUrl: 'module/PeopleFinder/list.html',
+            controller: 'PeopleFinderController'
+        })
     }
 ]);
 
@@ -37,4 +37,7 @@ contactModule.controller('PeopleFinderController', function ($scope, $http) {
         }
     };
 
+    $scope.go = function ( path ) {
+        $location.path( path );
+    };
 });

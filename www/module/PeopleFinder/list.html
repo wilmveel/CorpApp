@@ -12,8 +12,9 @@
     <tr ng-repeat="item in list">
         <td>{{item.firstname}}</td>
         <td>{{item.name}}</td>
-        <td>{{item.mobile}}</td>
+        <td><a ng-href="tel:{{item.mobile}}">{{item.mobile}}</a></td>
         <td><image src="icon.png" height="20" width="20"/></td>
     </tr>
     </tbody>
+    <a href="#/home">Back</a>
 </table>
