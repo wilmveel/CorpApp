@@ -1,5 +1,5 @@
 
-var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments']);
+var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation']);
 //routing
 corpApp.config(['$routeProvider',
   function($routeProvider) {
@@ -29,7 +29,7 @@ corpApp.controller('HomeController', function($scope, $http) {
 		return color[i % 4];
 	};
 
-	$scope.modules = ["PeopleFinder", "expenses", "buddy", "departments"];
+	$scope.modules = ["PeopleFinder", "expenses", "buddy", "departments", "presentation"];
 });
 corpApp.controller('ModuleController', function($scope, $http) {
 	
