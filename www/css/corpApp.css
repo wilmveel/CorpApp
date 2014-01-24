@@ -57,8 +57,9 @@ body {
 .header .logo {
 	background-image: url("../img/logo.png");
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 75px;
 	background-position:center;
+	background-color:#1898CE;
 }
 
 .header .date {
@@ -136,5 +137,17 @@ body {
 
 .footer .button-menu {
 	background-image: url("../img/footer_menu.png");
+}
+
+/* footer */
+.title {
+	height:75px;
+}
+
+.title .text{
+	line-height:75px;
+	font-size: 24px;
+	text-transform:uppercase;
+	color: #d3d3d3;
 }
     
