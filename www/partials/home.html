@@ -1,8 +1,8 @@
 <div class="menu">
 	<div class="row">
 		<div ng-repeat="module in modules" class="col-xs-6 block block-{{color($index)}}">
-			<a ng-href="#/module/{{module}}">
-				<span>{{module}} {{$index}} {{getColor($index)}}</span>
+			<a ng-href="#/module/{{module}}" class="icon icon-{{module | lowercase}}">
+				
 			</a>
 		</div>
 	</div>

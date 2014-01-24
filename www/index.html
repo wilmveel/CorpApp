@@ -32,9 +32,9 @@
         <title>CorpApp</title>
     </head>
     <body>
-        
-		<div id="wrap">
-			<div id="header" class="container header">
+	
+        <div class="navbar navbar-default navbar-fixed-top header">
+			<div class="container">
 				<div class="row">
 					<div class="col-xs-3 block logo"></div>
 					<div class="col-xs-9 block block-dark date">
@@ -43,20 +43,22 @@
 					</div>
 				</div>
 			</div>
-			<div id="main" class="container main">
-				<div ng-view ></div>
-			</div>
-			<div id="push"></div>
 		</div>
-		
-		<div id="footer" class="container footer">
-			<div class="row">
-				<div class="col-xs-3 block block-medium"></div>
-				<div class="col-xs-6 block block-light"></div>
-				<div class="col-xs-3 block block-dark"></div>
+
+		<div class="container main">
+			<div ng-view ></div>
+		</div>
+
+		 <div class="navbar navbar-default navbar-fixed-bottom footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 block block-medium"><a class="button" href="javascript:history.go(-1)"></a></div>
+					<div class="col-xs-6 block block-light"><a class="button" href="#/home"></a></div>
+					<div class="col-xs-3 block block-dark"><a class="button" href="#/login"></a></div>
+				</div>
 			</div>
 		</div>
-		
+	  		
         <script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/angular.min.js"></script>
 		<script type="text/javascript" src="js/angular-route.min.js"></script>

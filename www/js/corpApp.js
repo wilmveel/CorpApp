@@ -4,7 +4,11 @@ var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'cor
 corpApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/home', {
+      when('/login', {
+        templateUrl: 'partials/login.html',
+        controller: 'LoginController'
+      }).
+	  when('/home', {
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
       }).
@@ -13,10 +17,12 @@ corpApp.config(['$routeProvider',
       });
   }]);
   
+corpApp.controller('LoginController', function($scope, $http) {
+	
+});
+
 corpApp.controller('HomeController', function($scope, $http) {
-	
-	$scope.test = "test";
-	
+		
 	$scope.color = function(i){
 	
 		color = {
@@ -31,6 +37,7 @@ corpApp.controller('HomeController', function($scope, $http) {
 
 	$scope.modules = ["PeopleFinder", "expenses", "buddy", "departments", "presentation"];
 });
+
 corpApp.controller('ModuleController', function($scope, $http) {
 	
 	$scope.test = "test";
