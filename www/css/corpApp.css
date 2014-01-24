@@ -22,7 +22,10 @@ body {
 	background-color: #f5f5f5;
 }
 
-
+@font-face {
+    font-family: helveticaneueltstd-ultlt-webfont;
+    src: url("../fonts/helveticaneueltstd-ultlt-webfont.ttf") format("truetype");
+}
 /* block */
 .block {
 	height:75px;
@@ -63,7 +66,7 @@ body {
 }
 
 .header .date {
-	
+	font-family: helveticaneueltstd-ultlt-webfont, Helvetica, Verdana, Sans-Serif;	
 }
 
 .header .date .day{
@@ -73,6 +76,7 @@ body {
 	color:#FFF;
 	font-size: 24px;
 }
+
 
 /* main */
 .main {
