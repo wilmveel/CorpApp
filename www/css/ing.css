@@ -1,0 +1,38 @@
+.block-light {
+	background-color: #FE9B38; /* light orange*/
+}
+
+.block-medium {
+	background-color: #FF3F00; /*medium orange */
+}
+
+.block-dark {
+	background-color: #FF6600; /*ING Orange */
+}
+
+.block-regular {
+	background-color: #F60000; /* dark orange */
+}
+.header .logo {
+	background-image: url("../img/logo_ing.png");
+	background-color:#FF6600;
+}
+.search .btn{
+	background-color: #FF6600;
+	
+}
+.btn-primary {
+  color: #ffffff;
+  background-color: #FF6600;
+  border-color: grey;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #FF3F00;
+  border-color: grey;
+}
