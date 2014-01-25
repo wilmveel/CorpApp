@@ -4,10 +4,9 @@
 			<img class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
 		</div>
 		<div class="col-xs-6 block block-white">
-			{{item}}
 			<a ng-href="#/module/profile" class="icon icon-profile">
-				<span class="">Willem</span>
-				<span class="">Veelenturf</span>
+				<span class="">{{item.firstname}}</span>
+				<span class="">{{item.lastname}}</span>
 			</a>
 		</div>
 		<div ng-repeat="module in modules" class="col-xs-6 block block-{{color($index)}}">
