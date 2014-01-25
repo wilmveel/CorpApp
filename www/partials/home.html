@@ -1,11 +1,13 @@
 <div class="row">
 	<div class="menu">
-		<div class="col-xs-6 block">
-			<img class="picture" src="http://www.familieslager.nl/capathon/lion2.jpg" wid/>
+		<div class="col-xs-6 block block-white">
+			<img class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
 		</div>
 		<div class="col-xs-6 block block-white">
-			<a ng-href="#/module/{{module}}" class="icon icon-{{module | lowercase}}">
-				
+			{{item}}
+			<a ng-href="#/module/profile" class="icon icon-profile">
+				<span class="">Willem</span>
+				<span class="">Veelenturf</span>
 			</a>
 		</div>
 		<div ng-repeat="module in modules" class="col-xs-6 block block-{{color($index)}}">

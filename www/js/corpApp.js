@@ -37,7 +37,7 @@ corpApp.service('Loginservice', function () {
 
 });
 
-corpApp.controller('HomeController', function($scope, $http) {
+corpApp.controller('HomeController', function($scope, $http, Loginservice) {
 		
 	$scope.color = function(i){
 	
@@ -51,7 +51,21 @@ corpApp.controller('HomeController', function($scope, $http) {
 		return color[i % 4];
 	};
 
-	$scope.modules = ["PeopleFinder", "expenses", "profile", "coach", "departments", "presentation"];
+	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation"];
+	
+	$http({method: 'GET', url: 'http://192.168.101.192:8080/searchcontact/' + Loginservice.username}).
+	success(function(data, status, headers, config) {
+		// this callback will be called asynchronously
+		// when the response is available
+		$scope.item = data[0];
+
+	}).
+	error(function(data, status, headers, config) {
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+		$scope.list = {};
+			alert("Error");
+	});
 });
 
 corpApp.controller('ModuleController', function($scope, $http) {
