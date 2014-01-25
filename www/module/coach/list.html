@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="title"> Coaching </div>
+</div>
+
+<div class="row">
+	<div class="block block-form">
+		<form role="form" >
+		<div class="form-group"><br/>
+
+		  <input type="label" class="form-control" placeholder="Skill" ng-model="Skill" autofocus="autofocus" />
+		</div>
+		<button type="button"  class="btn btn-default" ng-click="searchCoach()" ><b>search coach</b></button>&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button"  class="btn btn-default" ng-click="searchStudent()" ><b>search student</b></button>
+		<br/><br/>
+		<input type="checkbox"  ng-model="practice"  [ng-change="{string}"]></input> <label for="formName"> Practice  </label>
+
+		<div class="alert alert-success" ng-model = status ng-show="status == true">Sorry could not find.</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="contact" ng-repeat="item in list">
+		<img class="photo" ng-src="http://www.familieslager.nl/capathon/{{item.photo}}" width="75px" height="75px" />
+		<a class="name" href="#/module/coach/Details/{{item._id}}">{{item.firstname}} {{item.lastname}}</a>
+		<a class="phone" ng-href="tel:{{item.telephone}}">{{item.telephone}}</a> 
+	</div>
+</div>
+

@@ -16,9 +16,9 @@
     <div class="contact icon-holder-position">
         <div class="text-format text-bold">mobile</div>
         <div>
-            <div class="text-format" >{{detail.telephone | tel}}</div>
-            <a ng-href="tel:{{detail.mobile}}"><img
-                    class="telephone" src="img/module_icon_call.png"/></a>
+            <div class="text-small">{{detail.telephone}}</div>
+            <a ng-href="tel:{{detail.mobile}}">
+				<img class="telephone" src="img/module_icon_call.png"/>
         </div>
     </div>
 </div>
@@ -27,22 +27,23 @@
     <div class="contact icon-holder-position">
         <div class="text-format text-bold">email</div>
         <div>
-            <div class="text-format">{{detail.email.toLowerCase()}}</div>
-            <a ng-href="mailto:{{detail.email}}"> <img
-                    class="telephone" src="img/module_icon_email.png"/></a>
+            <div class="text-small">{{detail.email.toLowerCase()}}</div>
+            <a ng-href="mailto:{{detail.email}}">
+				<img class="telephone" src="img/module_icon_email.png"/>
+			</a>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="contact">
         <div class="text-format text-bold">residence</div>
-        <div class="text-format">{{detail.residence}}</div>
+        <div class="text-small">{{detail.residence}}</div>
     </div>
 </div>
 <div class="row">
     <div class="contact">
         <div class="text-format text-bold">Availability</div>
-        <div class="text-format" ng-switch on="detail.asince">
+        <div class="text-small" ng-switch on="detail.asince">
             <div ng-switch-when="1"> Available</div>
             <div ng-switch-when="0"> On project</div>
             <div ng-switch-default> Unknown</div>
@@ -52,23 +53,23 @@
 <div class="row">
     <div class="client block contact col-xs-6">
         <div class="text-format text-bold">client</div>
-        <div class="text-format">{{detail.client}}</div>
+        <div class="text-small">{{detail.client}}</div>
     </div>
     <div class="client block contact col-xs-6">
         <div class="text-format text-bold">location</div>
-        <div class="text-format">{{detail.worklocation}}</div>
+        <div class="text-small">{{detail.worklocation}}</div>
     </div>
 </div>
 <div class="row">
     <div class="contact">
         <div class="text-format text-bold">practice</div>
-        <div class="text-format">{{detail.practice}}</div>
+        <div class="text-small">{{detail.practice}}</div>
     </div>
 </div>
 <div class="row">
     <div class="contact heightVar">
         <div class="text-format text-bold">skills</div>
-        <div class="text-format" ng-repeat="skill in detail.expertise">{{skill}}</div>
+        <div class="text-small" ng-repeat="skill in detail.expertise">{{skill}}</div>
     </div>
 </div>
 

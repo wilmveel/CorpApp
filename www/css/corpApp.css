@@ -61,6 +61,11 @@ body {
 }
 
 
+.block-white {
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+
 .block .text{
 	text-align: justify;
 	padding: 30px 0px;
@@ -75,6 +80,13 @@ body {
 
 .text-format {
     font-size: 24px;
+    padding: 5px 10px 5px 10px;
+    display: block;
+    color: #003d86;
+}
+
+.text-small {
+    font-size: 16px;
     padding: 0px 10px 10px 10px;
     display: block;
     color: #003d86;

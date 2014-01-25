@@ -1,4 +1,5 @@
 platforms/
+plugins/
 /.project
 /.settings/.jsdtscope
 /.settings/org.eclipse.wst.jsdt.ui.superType.container
