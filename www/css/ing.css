@@ -21,6 +21,22 @@
 	background-color: #FF6600;
 	
 }
+@font-face {
+    font-family: RockwellBold;
+    src: url("../fonts/RockwellBold.ttf") format("truetype");
+}
+.date{
+	font-family: RockwellBold,Georgia,Times,serif;	
+}
+.welcome_h1{
+	font-family: RockwellBold,Georgia,Times,serif;
+	
+}
+.welcome_h4{
+	font-family: arial,helvetica,clean,sans-serif;
+	
+}
+
 .btn-primary {
   color: #ffffff;
   background-color: #FF6600;

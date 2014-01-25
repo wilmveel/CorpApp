@@ -1,0 +1,30 @@
+.block-light {
+	background-color: #61C5E9; /* light orange*/
+}
+
+.block-medium {
+	background-color: #1898CE; /*medium orange */
+}
+
+.block-dark {
+	background-color: #003d86; /*ING Orange */
+}
+
+.block-regular {
+	background-color: #0b7391; /* dark orange */
+}
+.header .logo {
+	background-image: url("../img/logo.png");
+	background-color:#1898CE;
+}
+.search .btn{
+	background-color: #1898CE;	
+}
+.welcome_h1{
+	font-family: helveticaneueltstd-ultlt-webfont,Georgia,Times,serif;
+	
+}
+.welcome_h4{
+	font-family: helveticaltstd-light-webfont,Georgia,Times,serif;
+	
+}

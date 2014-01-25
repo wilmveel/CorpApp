@@ -28,7 +28,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 
         <link rel="stylesheet" type="text/css" href="css/corpApp.css" />
-		<!--<link rel="stylesheet" type="text/css" href="css/ing.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/capgemini.css" class="theme" />
+		<link rel="stylesheet" type="text/css" href="css/ing.css" class="theme" disabled="" />
         <link rel="stylesheet" type="text/css" href="module/expenses/css/module.css" />
 		
         <title>CorpApp</title>
@@ -36,9 +37,9 @@
     <body>
 	
         <div class="navbar navbar-default navbar-fixed-top header">
-			<div class="container">
+			<div class="container"ng-controller="mainCtrl">
 				<div class="row">
-					<div class="col-xs-3 block logo"></div>
+					<div class="col-xs-3 block logo" ng-click="changeTheme()"></div>
 					<div class="col-xs-9 block block-dark date">
 						<span class="day">Zaterdag</span>
 						<span class="day">25 januari</span>
