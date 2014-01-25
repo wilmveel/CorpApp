@@ -34,15 +34,18 @@ profileModule.controller('ProfileController', function($scope, $http, Loginservi
 
 $scope.edit = function(){
 		console.log("Edit profile: ", $scope.list[0]);
-		var url = "http://192.168.101.192:8080/contacts/"+$scope.list[0]._id;
-		console.log(url);
-		return $http.post(url, $scope.list[0]).success(function(data){
+		//var url = "http://192.168.101.192:8080/contact";
+		//console.log(url);
+		$http({method: 'POST', url: 'http://192.168.101.192:8080/contact', data: $scope.list[0]}).
+		success(function(data, status){
 				console.log(data);
 				$scope.status = true;
-			}).error(function(data){
+			}).error(function(data,status,headers,config){
 				console.log(data);
+				console.log(status);
+				console.log(headers);
+				console.log(config);
 				$scope.status = false;
-				console.log($scope.status);
 			});
 	};
 	
