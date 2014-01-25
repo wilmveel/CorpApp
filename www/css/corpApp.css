@@ -27,13 +27,15 @@ body {
     font-family: helveticaneueltstd-ultlt-webfont;
     src: url("../fonts/HelveticaNeueLTStd-UltLt.otf") format("opentype");
 }
+
 @font-face {
 	font-family: helveticaltstd-light-webfont;
 	src: url("../fonts/helveticaltstd-light-webfont.ttf") format("truetype");
 }
+
 /* block */
 .block {
-	height:75px;
+	height:100%;
 	border: 2px solid #d3d3d3;
 }
 
@@ -51,6 +53,19 @@ body {
 
 .block-regular {
 	background-color: #0b7391;
+}
+
+/* row size */
+.row-small {
+	height:36px;
+}
+
+.row-medium {
+	height:75px;
+}
+
+.row-large {
+	height:150px;
 }
 
 /* header */
@@ -165,6 +180,7 @@ body {
 	background-position:center right;
 	background-color: #FFFFFF;
 	padding: 0px 10px;
+	margin: 0px;
 	border-bottom: 4px solid #d3d3d3;
 }
 
@@ -218,4 +234,8 @@ body {
 .inputskills{
 	width:100%;
 }
-    
+
+
+.module{
+
+}   
