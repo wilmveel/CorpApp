@@ -141,6 +141,14 @@ body {
 	background-image: url("../img/menu_icon_presentation.png");
 }
 
+.menu a.icon-expenses {
+	background-image: url("../img/menu_icon_expenses.png");
+}
+
+.menu a.icon-profile {
+	background-image: url("../img/menu_icon_profile.png");
+}
+
 /* footer */
 .footer{
 	

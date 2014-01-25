@@ -31,8 +31,6 @@ $scope.save = function(){
 	}
 });
 
-
-
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 
@@ -66,7 +64,7 @@ function onPhotoDataSuccess(imageData) {
   //
   smallImage.src = "data:image/jpeg;base64," + imageData;
   
-  window.location.href = "#/module/expenses/form";
+  window.location = "#/module/expenses/form";
 }
 
 // Called when a photo is successfully retrieved
@@ -88,9 +86,12 @@ function onPhotoURISuccess(imageURI) {
 	//
 	largeImage.src = imageURI;
 	
-	window.location.href = "#/module/expenses/form";
+	window.location = "#/module/expenses/form";
 }
 
+function test(imageURI) {
+	window.location = "#/module/expenses/form";
+}
 // A button will call this function
 //
 function capturePhoto() {
