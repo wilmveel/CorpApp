@@ -281,6 +281,15 @@ body {
 	
 }
 
+.telephone {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.icon-holder-position {
+    position: relative;
+}
 .list-group-item{
 	border-bottom:  4px solid #DDDDDD;
 }

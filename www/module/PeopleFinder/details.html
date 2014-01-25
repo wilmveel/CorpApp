@@ -1,28 +1,52 @@
 <div class="row">
     <div class="title title-peoplefinder">
-        People Finder</div>
+        People Finder
+    </div>
 </div>
 <div class="row row-large">
-        <img class="photo-block block contact contact-large col-xs-6 photo" ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px" />
-        <div class="block contact text-format contact-large col-xs-6 name-personal-detail">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
+    <img class="photo-block block contact contact-large col-xs-6 photo"
+         ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px"/>
+
+    <div class="block contact text-format contact-large col-xs-6 name-personal-detail">{{detail.firstname}}
+        {{detail.tussenvoegsel}} {{detail.lastname}}
+    </div>
 
 </div>
 <div class="row">
-    <div class="contact">
-        <div class="text-format text-bold">mobiel</div>
-        <a class="text-format" ng-href="tel:{{detail.mobile}}">{{detail.telephone}}</a>
+    <div class="contact icon-holder-position">
+        <div class="text-format text-bold">mobile</div>
+        <div>
+            <div class="text-format">{{detail.telephone}}</div>
+            <a ng-href="tel:{{detail.mobile}}"> <img
+                    class="telephone" src="img/module_icon_call.png"/></a>
+        </div>
     </div>
 </div>
+</div>
 <div class="row">
-    <div class="contact">
+    <div class="contact icon-holder-position">
         <div class="text-format text-bold">email</div>
-        <a class="text-format" ng-href="mailto:{{detail.email}}">{{detail.email.toLowerCase()}}</a>
+        <div>
+            <div class="text-format">{{detail.email.toLowerCase()}}</div>
+            <a ng-href="mailto:{{detail.email}}"> <img
+                    class="telephone" src="img/module_icon_email.png"/></a>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="contact">
         <div class="text-format text-bold">residence</div>
         <div class="text-format">{{detail.residence}}</div>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">Availability</div>
+        <div class="text-format" ng-switch on="detail.asince">
+            <div ng-switch-when="1"> Available</div>
+            <div ng-switch-when="0"> On project</div>
+            <div ng-switch-default> Unknown</div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -37,13 +61,13 @@
 </div>
 <div class="row">
     <div class="contact">
-        <div class="text-format text-bold">residence</div>
-        <div class="text-format">{{detail.residence}}</div>
+        <div class="text-format text-bold">practice</div>
+        <div class="text-format">{{detail.practice}}</div>
     </div>
 </div>
 <div class="row">
     <div class="contact heightVar">
-        <div class="text-format text-bold">Skills</div>
+        <div class="text-format text-bold">skills</div>
         <div class="text-format" ng-repeat="skill in detail.expertise">{{skill}}</div>
     </div>
 </div>
