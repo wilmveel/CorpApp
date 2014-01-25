@@ -1,24 +1,24 @@
 <div class="module module-expenses">
 
 	<div class="row">
-		<h1 class="title">Expense</h1>
+		<div class="title">Expenses</div>
 	</div>
 	
 	<div class="row">
-		<div class="text">Hier komt wat text.</div>
+		<div class="col-xs-12 block block-light">
+			<div class="text">Welcome to the expenses module. Please use one of the options below to upload your invoice. After that fill in the required information.</div>
+		</div>
 	</div>
 
 	<div class="row row-large">
-		<div class="col-xs-6 block block-dark">
-			<a href="" ></a>
+		<div class="col-xs-6 block block-regular icon-camera">
+			<a class="icon icon-camera" href="" ng-click="camera();"></a>
 		</div>
 		
-		<div class="col-xs-6 block block-light">
-			<a href="" ng-click="camera();">Camera</a>
+		<div class="col-xs-6 block block-medium icon-gallery">
+			<a class="icon icon-gallery" href="" ng-click="gallery();"></a>
 		</div>
-		
-		<button onclick="capturePhoto()">Camera</button>
-		<button onclick="capturePhoto();">Capture Photo</button> <br>
+
 	</div>
 		
 </div>
