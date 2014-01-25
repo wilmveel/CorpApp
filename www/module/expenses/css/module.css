@@ -21,3 +21,13 @@
 .module-expenses  .block .icon-gallery {
 	background-image: url("../img/gallery_icon.png");
 }
+
+.module-expenses  .block .icon-done {
+	background-image: url("../img/done_icon.png");
+	background-size: 75px;
+}
+
+.module-expenses  .block .icon-back {
+	background-image: url("../img/back_icon.png");
+	background-size: 75px;
+}

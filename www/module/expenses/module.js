@@ -5,11 +5,15 @@ expensesModule.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 		when('/module/expenses', {
-			templateUrl: 'module/expenses/camera.html',
+			templateUrl: 'module/expenses/partials/camera.html',
 			controller: 'ExpensesController'
 		}).
 		when('/module/expenses/form', {
-			templateUrl: 'module/expenses/form.html',
+			templateUrl: 'module/expenses/partials/form.html',
+			controller: 'ExpensesController'
+		}).
+		when('/module/expenses/success', {
+			templateUrl: 'module/expenses/partials/success.html',
 			controller: 'ExpensesController'
 		})
 	}
@@ -17,18 +21,19 @@ expensesModule.config(['$routeProvider',
 
 expensesModule.controller('ExpensesController', function($scope) {
 
-$scope.camera = function(){		
-	navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
-}
-
-$scope.gallery = function(){		
-	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: source });
-}
-
-$scope.save = function(){		
-	$scope.status = true;
-
+	$scope.camera = function(){		
+		navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
 	}
+
+	$scope.gallery = function(){		
+		navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: pictureSource.PHOTOLIBRARY });
+	}
+
+	$scope.save = function(){		
+		$scope.status = true;
+		window.location.href = "index.html#/module/expenses/success";
+	}
+	
 });
 
 var pictureSource;   // picture source
@@ -48,23 +53,27 @@ function onDeviceReady() {
 // Called when a photo is successfully retrieved
 //
 function onPhotoDataSuccess(imageData) {
-  // Uncomment to view the base64-encoded image data
-  // console.log(imageData);
+	// Uncomment to view the base64-encoded image data
+	// console.log(imageData);
 
-  // Get image handle
-  //
-  var smallImage = document.getElementById('smallImage');
+	window.location.href = "index.html#/module/expenses/form";
+	
+	// Get image handle
+	//
+	//var smallImage = document.getElementById('smallImage');
 
-  // Unhide image elements
-  //
-  smallImage.style.display = 'block';
+	// Unhide image elements
+	//
+	//smallImage.style.display = 'block';
 
-  // Show the captured photo
-  // The in-line CSS rules are used to resize the image
-  //
-  smallImage.src = "data:image/jpeg;base64," + imageData;
-  
-  window.location = "#/module/expenses/form";
+	// Show the captured photo
+	// The in-line CSS rules are used to resize the image
+	//
+	//smallImage.src = "data:image/jpeg;base64," + imageData;
+
+	//
+		
+	//window.location.href = "index.html#/module/expenses/form";
 }
 
 // Called when a photo is successfully retrieved
@@ -86,7 +95,7 @@ function onPhotoURISuccess(imageURI) {
 	//
 	largeImage.src = imageURI;
 	
-	window.location = "#/module/expenses/form";
+	window.location.href = "index.html#/module/expenses/form";
 }
 
 function test(imageURI) {
