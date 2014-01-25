@@ -1,3 +1,41 @@
-<div>{{detail}}</div>
-
+<table>
+    <tbody>
+    <tr>
+        <th>Name:</th>
+        <td>{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.name}}</td>
+    </tr>
+    <tr>
+        <th>Practice:</th>
+        <td>{{detail.Practice}}</td>
+    </tr>
+    <tr>
+        <th>Sector:</th>
+        <td>{{detail.Sector}}</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>{{detail.Email}}</td>
+    </tr>
+    <tr>
+        <th>mobile:</th>
+        <td>{{detail.mobile}}</td>
+    </tr>
+    <tr>
+        <th>Residence:</th>
+        <td>{{detail.Residence}}</td>
+    </tr>
+    <tr>
+        <th>Worklocation:</th>
+        <td>{{detail.Worklocation}}</td>
+    </tr>
+    <tr><th>skill:</th></tr>
+    <tr ng-repeat="skill in detail.Expertise">
+        <td></td>
+        <td>{{skill}}</td>
+    </tr>
+    </tbody>
+    <a href="#/home">Back</a>
+</table>
+<button class="btn btn-success pull-right" ng-click="saveAsContact()">Save as Contact</button>
 <a href="#/module/PeopleFinder">Back to List</a>
+
