@@ -3,40 +3,40 @@
 </div>
 <html>
 <form role="form" >
-<div class="form-group">
-  <label for="formName">Name</label>
-  <input type="label" class="form-control" placeholder="Name" ng-model="list[0].firstname">
-</div>
-<div class="form-group">
-  <label for="formName">Phone</label>
-  <input type="text" class="form-control" placeholder="Telephone" ng-model="list[0].telephone">
-</div>
-<div class="form-group">
-    <label for="formName">Residence</label>
-    <input type="text" class="form-control" id="formName" placeholder="Residence" ng-model="list[0].residence">
-</div>
-<div class="form-group">
-    <label for="formName">Email-Id</label>
-    <input type="text" class="form-control" id="formName" placeholder="Email-Id" ng-model="list[0].email">
-</div>
-<div class="form-group">
-    <label for="formType">Skills</label>
-		<ul class="list-group">
-			<input type="text" class="list-group-item inputskills" ng-repeat="skills in list[0].expertise" value={{skills}}>{{skills}}
-			</input>
-		</ul>
- </div>
- <div class="form-group">
-    <label for="formName">Client</label>
-    <input type="text" class="form-control" id="formName" placeholder="Client" ng-model="list[0].client">
-</div>
-<div class="form-group">
-    <label for="formName">Available</label></br>
-    <input type="radio" name="groupavailable" value="1" ng-model="list[0].asince"> Yes
-	<input type="radio" name="groupavailable" value="0" ng-model="list[0].asince"> No
-</div>
-<div class="alert alert-success" ng-model = status ng-show="status == true">Your details are successfully Updated.</div>
-<div class="alert alert-success" ng-model = status ng-show="status == false">Failed to update details.</div>
-<button type="button" class="btn btn-default" ng-click="edit()"><b>SAVE</b></button></br></br>
-	</form>
-</html
+    <div class="form-group">
+      <label for="formName">Name</label>
+      <input type="label" class="form-control" placeholder="Name" ng-model="item.firstname">
+    </div>
+    <div class="form-group">
+      <label for="formName">Phone</label>
+      <input type="text" class="form-control" placeholder="Telephone" ng-model="item.telephone">
+    </div>
+    <div class="form-group">
+        <label for="formName">Residence</label>
+        <input type="text" class="form-control" id="formName" placeholder="Residence" ng-model="item.residence">
+    </div>
+    <div class="form-group">
+        <label for="formName">Email-Id</label>
+        <input type="text" class="form-control" id="formName" placeholder="Email-Id" ng-model="item.email">
+    </div>
+    <div class="form-group">
+        <label for="formType">Skills</label>
+            <ul class="list-group">
+                <input type="text" class="list-group-item inputskills" ng-repeat="skills in item.expertise" ng-model="skills" >{{skills}}
+                </input>
+            </ul>
+     </div>
+     <div class="form-group">
+        <label for="formName">Client</label>
+        <input type="text" class="form-control" id="formName" placeholder="Client" ng-model="item.client">
+    </div>
+    <div class="form-group">
+        <label for="formName">Available</label></br>
+        <input type="radio" name="groupavailable" value="1" ng-model="item.asince"> Yes
+        <input type="radio" name="groupavailable" value="0" ng-model="item.asince"> No
+    </div>
+    <div class="alert alert-success" ng-model = status ng-show="status == true">Your details are successfully Updated.</div>
+    <div class="alert alert-success" ng-model = status ng-show="status == false">Failed to update details.</div>
+    <button type="button" class="btn btn-default" ng-click="edit()"><b>SAVE</b></button></br></br>
+</form>
+</html>
