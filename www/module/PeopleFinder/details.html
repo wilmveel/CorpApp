@@ -1,41 +1,24 @@
-<table>
-    <tbody>
-    <tr>
-        <th>Name:</th>
-        <td>{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.name}}</td>
-    </tr>
-    <tr>
-        <th>Practice:</th>
-        <td>{{detail.Practice}}</td>
-    </tr>
-    <tr>
-        <th>Sector:</th>
-        <td>{{detail.Sector}}</td>
-    </tr>
-    <tr>
-        <th>Email:</th>
-        <td>{{detail.Email}}</td>
-    </tr>
-    <tr>
-        <th>mobile:</th>
-        <td>{{detail.mobile}}</td>
-    </tr>
-    <tr>
-        <th>Residence:</th>
-        <td>{{detail.Residence}}</td>
-    </tr>
-    <tr>
-        <th>Worklocation:</th>
-        <td>{{detail.Worklocation}}</td>
-    </tr>
-    <tr><th>skill:</th></tr>
-    <tr ng-repeat="skill in detail.Expertise">
-        <td></td>
-        <td>{{skill}}</td>
-    </tr>
-    </tbody>
-    <a href="#/home">Back</a>
-</table>
-<button class="btn btn-success pull-right" ng-click="saveAsContact()">Save as Contact</button>
-<a href="#/module/PeopleFinder">Back to List</a>
+<div class="row">
+    <div class="title title-peoplefinder">
+        People Finder</div>
+</div>
+<div class="row-large">
+    <div class="contact">
+        <img class="block-detail col-xs-6 photo" ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px" />
+        <div class="col-xs-6 name">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="name">mobiel</div>
+        <a class="name" ng-href="tel:{{detail.mobile}}">{{detail.telephone}}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="name">email</div>
+        <a class="name" ng-href="email:{{detail.email}}">{{detail.email}}</a>
+    </div>
+</div>
+
 
