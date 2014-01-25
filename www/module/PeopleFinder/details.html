@@ -4,7 +4,7 @@
 </div>
 <div class="row row-large">
         <img class="photo-block block contact contact-large col-xs-6 photo" ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px" />
-        <div class="block contact text-format contact-large col-xs-6">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
+        <div class="block contact text-format contact-large col-xs-6 name-personal-detail">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
 
 </div>
 <div class="row">
@@ -16,7 +16,7 @@
 <div class="row">
     <div class="contact">
         <div class="text-format text-bold">email</div>
-        <a class="text-format" ng-href="email:{{detail.email}}">{{detail.email}}</a>
+        <a class="text-format" ng-href="mailto:{{detail.email}}">{{detail.email.toLowerCase()}}</a>
     </div>
 </div>
 <div class="row">
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="contact">
+    <div class="contact heightVar">
         <div class="text-format text-bold">Skills</div>
         <div class="text-format" ng-repeat="skill in detail.expertise">{{skill}}</div>
     </div>

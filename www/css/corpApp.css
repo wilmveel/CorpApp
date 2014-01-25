@@ -177,6 +177,14 @@ body {
 	background-image: url("../img/menu_icon_profile.png");
 }
 
+.name-personal-detail {
+    background-position: center;
+    background-color: #1898CE !important;
+    vertical-align: middle !important;
+    padding-top: 45px;
+    color: white !important;
+}
+
 /* footer */
 .footer{
 	
@@ -273,6 +281,10 @@ body {
 
 .inputskills{
 	width:100%;
+}
+
+.heightVar{
+    height: 100%;
 }
 
 
