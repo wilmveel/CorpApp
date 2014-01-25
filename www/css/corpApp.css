@@ -201,9 +201,14 @@ body {
 }
 
 /* search */
-
 .search{
 	border-bottom: 4px solid #d3d3d3;
+}
+
+.search .btn{
+	background-color: #1898CE;
+	color:#FFFFFF;
+	
 }
 
 .list-group-item{
