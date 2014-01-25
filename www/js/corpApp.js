@@ -17,6 +17,12 @@ corpApp.config(['$routeProvider',
       });
   }]);
   
+corpApp.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+  
 corpApp.controller('LoginController', function($scope, $http, Loginservice) {
 	
 	$scope.login = function(){
