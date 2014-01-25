@@ -55,11 +55,32 @@ body {
 	background-color: #0b7391;
 }
 
+
 .block .text{
 	text-align: justify;
 	padding: 30px 0px;
 	font-size:18px;
 	color:#FFF;
+}
+
+.photo-block {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.text-format {
+    font-size: 24px;
+    padding: 0px 10px 10px 10px;
+    display: block;
+    color: #003d86;
+}
+
+.text-bold {
+    font-weight:bold;
+}
+
+.client {
+    border-top: 0px;
 }
 
 /* row size */
@@ -209,9 +230,13 @@ body {
 }
 
 .contact {
-	background:#FFF;
-	height:79px;
-	border-bottom: 4px solid #d3d3d3;
+     background:#FFF;
+     height:79px;
+     border-bottom: 4px solid #d3d3d3;
+ }
+
+.contact-large {
+    height:150px !important;
 }
 
 .contact .photo{

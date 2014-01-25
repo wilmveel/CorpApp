@@ -2,23 +2,49 @@
     <div class="title title-peoplefinder">
         People Finder</div>
 </div>
-<div class="row-large">
-    <div class="contact">
-        <img class="block-detail col-xs-6 photo" ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px" />
-        <div class="col-xs-6 name">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
-    </div>
-</div>
-<div class="row">
-    <div class="contact">
-        <div class="name">mobiel</div>
-        <a class="name" ng-href="tel:{{detail.mobile}}">{{detail.telephone}}</a>
-    </div>
-</div>
-<div class="row">
-    <div class="contact">
-        <div class="name">email</div>
-        <a class="name" ng-href="email:{{detail.email}}">{{detail.email}}</a>
-    </div>
-</div>
+<div class="row row-large">
+        <img class="photo-block block contact contact-large col-xs-6 photo" ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px" />
+        <div class="block contact text-format contact-large col-xs-6">{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</div>
 
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">mobiel</div>
+        <a class="text-format" ng-href="tel:{{detail.mobile}}">{{detail.telephone}}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">email</div>
+        <a class="text-format" ng-href="email:{{detail.email}}">{{detail.email}}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">residence</div>
+        <div class="text-format">{{detail.residence}}</div>
+    </div>
+</div>
+<div class="row">
+    <div class="client block contact col-xs-6">
+        <div class="text-format text-bold">client</div>
+        <div class="text-format">{{detail.client}}</div>
+    </div>
+    <div class="client block contact col-xs-6">
+        <div class="text-format text-bold">location</div>
+        <div class="text-format">{{detail.worklocation}}</div>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">residence</div>
+        <div class="text-format">{{detail.residence}}</div>
+    </div>
+</div>
+<div class="row">
+    <div class="contact">
+        <div class="text-format text-bold">Skills</div>
+        <div class="text-format" ng-repeat="skill in detail.expertise">{{skill}}</div>
+    </div>
+</div>
 
