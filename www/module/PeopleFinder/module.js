@@ -111,5 +111,18 @@ contactModule.service('PeopleDetailservice', function ($http, $q) {
 
         return deferred.promise;
     };
+ });
 
+contactModule.filter('tel', function () {
+    return function (tel) {
+        if (!tel) { return ''; }
+
+        var value = tel.toString().trim().replace(/^\+/, '');
+
+        if (value.match(/[^0-9]/)) {
+            return tel;
+        }
+        length = value.length;
+        return (value.slice(0,length-8) + " " + value.slice(length-8,length-4) + " " + value.slice(length-4 ,length));
+    };
 });

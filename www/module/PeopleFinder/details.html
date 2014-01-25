@@ -16,8 +16,8 @@
     <div class="contact icon-holder-position">
         <div class="text-format text-bold">mobile</div>
         <div>
-            <div class="text-format">{{detail.telephone}}</div>
-            <a ng-href="tel:{{detail.mobile}}"> <img
+            <div class="text-format" >{{detail.telephone | tel}}</div>
+            <a ng-href="tel:{{detail.mobile}}"><img
                     class="telephone" src="img/module_icon_call.png"/></a>
         </div>
     </div>

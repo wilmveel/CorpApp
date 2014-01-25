@@ -19,6 +19,6 @@
 	<div class="contact" ng-repeat="item in list">
 		<img class="photo" ng-src="http://www.familieslager.nl/capathon/{{item.photo}}" width="75px" height="75px" />
 		<a class="name" href="#/module/PeopleFinder/Details/{{item._id}}">{{item.firstname}} {{item.lastname}}</a>
-		<a class="phone" ng-href="tel:{{item.telephone}}">{{item.telephone}}</a> 
+		<a class="phone" ng-href="tel:{{item.telephone}}">{{item.telephone | tel}}</a>
 	</div>
 </div>
