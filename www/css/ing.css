@@ -1,16 +1,16 @@
-.block-light {
+.block-color0 {
 	background-color: #FE9B38; /* light orange*/
 }
 
-.block-medium {
+.block-color1 {
 	background-color: #FF3F00; /*medium orange */
 }
 
-.block-dark {
+.block-color2 {
 	background-color: #FF6600; /*ING Orange */
 }
 
-.block-regular {
+.block-color3 {
 	background-color: #F60000; /* dark orange */
 }
 .header .logo {

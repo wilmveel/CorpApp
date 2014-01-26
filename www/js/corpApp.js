@@ -42,10 +42,10 @@ corpApp.controller('HomeController', function($scope, $http, Loginservice) {
 	$scope.color = function(i){
 	
 		color = {
-			"0" : "regular",
-			"1" : "medium",
-			"2" : "dark",
-			"3" : "light",
+			"0" : "color0",
+			"1" : "color1",
+			"2" : "color2",
+			"3" : "color3",
 		};
 				
 		return color[i % 4];

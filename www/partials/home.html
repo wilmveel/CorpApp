@@ -1,15 +1,15 @@
 <div class="row">
 	<div class="menu">
-		<div class="col-xs-6 block block-white">
+		<div class="col-xs-6 col-sm-3 col-md-2 block block-white">
 			<img class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
 		</div>
-		<div class="col-xs-6 block block-white">
+		<div class="col-xs-6 col-sm-9 col-md-10 block block-white">
 			<a ng-href="#/module/profile" class="icon icon-profile">
 				<span class="">{{item.firstname}}</span>
 				<span class="">{{item.lastname}}</span>
 			</a>
 		</div>
-		<div ng-repeat="module in modules" class="col-xs-6 block block-{{color($index)}}">
+		<div ng-repeat="module in modules" class="col-xs-6 col-sm-3 col-md-2 block block-{{color($index)}}">
 			<a ng-href="#/module/{{module}}" class="icon icon-{{module | lowercase}}">
 				
 			</a>

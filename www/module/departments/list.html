@@ -1,23 +1,23 @@
 <div class="row">
-<div class="title">Contact List</div>
+	<div class="col-xs-12 block block-title block-title-contactlist">Contact List</div>
 </div>
 	
-	<ul class="list-group">
-		<li class="list-group-item row" ng-repeat="item in list">
-			<div class="col-xs-4">
-				<h3>{{item.department}}</h3>
-			</div>
-			<div class="col-xs-8">
-				<div class="row">
+<ul class="list-group">
+	<li class="list-group-item row" ng-repeat="item in list">
+		<div class="col-xs-4">
+			<h3>{{item.department}}</h3>
+		</div>
+		<div class="col-xs-8">
+			<div class="row">
 				<a ng-href="tel:{{item.telephone}}" class="glyphicon glyphicon-phone col-xs-2"></a><a class="col-xs-8" ng-href="tel:{{item.telephone}}">{{item.telephone}}</a>
-				</div>
-				<div class="row">
-				<a class="col-xs-2 glyphicon glyphicon-envelope"></a><a ng-href="mailto:{{item.email}}" class="col-xs-8">{{item.email}}</a>
-				</div>
-				<div class="row">
-				<div class="glyphicon glyphicon-home col-xs-2"></div><div class="col-xs-8">{{item.roomnumber}}</div>
-				</div>
-				</br>
 			</div>
-		</li>
-	</ul>
+			<div class="row">
+				<a class="col-xs-2 glyphicon glyphicon-envelope"></a><a ng-href="mailto:{{item.email}}" class="col-xs-8">{{item.email}}</a>
+			</div>
+			<div class="row">
+				<div class="glyphicon glyphicon-home col-xs-2"></div><div class="col-xs-8">{{item.roomnumber}}</div>
+			</div>
+			</br>
+		</div>
+	</li>
+</ul>
