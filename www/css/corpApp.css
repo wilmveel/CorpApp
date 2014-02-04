@@ -64,7 +64,7 @@ body {
 	color: #d3d3d3;
 	background-repeat: no-repeat;
 	background-size: 75px;
-	background-position:center right 5px;
+	background-position:center right;
 	background-color: #FFFFFF;
 	padding: 0px 10px;
 	margin: 0px;
@@ -154,8 +154,8 @@ body {
 
 /* main */
 .main {
-	margin-top: 75px;
-	margin-bottom: 75px;
+	padding-top: 75px;
+	padding-bottom: 75px;
 	border: 2px solid #d3d3d3;
 }
 

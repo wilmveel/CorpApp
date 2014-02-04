@@ -9,14 +9,14 @@
 			<form role="form" >
 				<div class="form-group">
 				  <label for="formName">Category</label>
-				  <select id="formCategory" ng-model="form.category" class="form-control" >
+				  <select id="formCategory" ng-model="form.category" class="form-control" placeholder="Category" >
 					<option value="Travel">Travel</option>
 					<option value="Learning">Learning Course</option>
 				  </select>
 				</div>
 				<div class="form-group" ng-show="form.category=='Travel'">
 				  <label for="formName">Type</label>
-				  <select id="formType1" ng-model="form.type" class="form-control" >
+				  <select id="formType1" ng-model="form.type" class="form-control" placeholder="Type">
 					<option value="AirPlane">Air plane ticket</option>
 					<option value="Parking">Parking invoice</option>
 					<option value="Car">Car Mileage</option>
