@@ -7,11 +7,26 @@
 		</div>
 	</div>
 	
-	<div class="row">
+	<div class="row" ng-hide="item">
 		<div class="col-xs-12 block block-white block-text">
-			<a class="btn btn-primary btn-block" ng-href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id={{clientId}}&redirect_uri={{redirectUrl}}">Connect to linkedin</a>
-			
-			<a href="file://index.html#">Test</a>
+			<a class="btn btn-primary btn-block" ng-click="linkedin()">Connect to linkedin</a>
 		</div>
+	</div>
+	
+	<div class="row row-large" ng-show="item" >
+		<div class="col-xs-6 col-ys-4 col-sm-3 col-md-2 block block-white">
+			<img height="150" ng-show="item.pictureUrl" class="menu-picture photo-block" ng-src="{{item.pictureUrl}}" />
+			<img ng-hide="item.pictureUrl" class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
+		</div>
+		<div class="col-xs-6 col-ys-8 col-sm-9 col-md-10 block block-color1">
+			<h2>{{item.headline}}</h2>
+		</div>
+		
+	</div>
+	
+	<div class="row row-large" ng-show="item" >
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="skill in item.skills.values">{{skill.skill.name}}</li>
+		</ul>
 	</div>
 </div>

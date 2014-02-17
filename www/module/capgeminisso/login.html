@@ -1,0 +1,49 @@
+
+		<form name="frmCredentials" method="post" action="https://sso.capgemini.com/authent/authent_action.asp" >
+			<input name="hidSelectedSSOServiceName" value="undefined" type="hidden">
+			<input name="server_identifier" value="undefined" type="hidden">
+			<input name="calling_url" value="https://sso.capgemini.com/home.asp" type="hidden">
+			<input name="cookie_err" value="NOT_ON_CGNET" type="hidden">
+			<input name="filter_version" value="" type="hidden">
+			
+			<table border="0" cellpadding="0" cellspacing="5" width="100%">
+				<tbody><tr height="170">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="input-field-label" width="90">
+						Login ID
+					</td>
+					<td>
+						<input name="cookie_user_name" size="33" maxlength="20" class="fields" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td class="input-field-label" align="left">
+						Password
+					</td>
+					<td>
+						<input autocomplete="off" name="cookie_user_password" size="33" class="fields" type="password">
+					</td>
+				</tr>
+				<tr>
+					<td class="input-field-label" align="left">
+						SSO Service
+					</td>
+					<td>
+						<select name="slctSSOService" class="fields" style="width: 160px">
+							 <option value="https://google.nl">Google</option>
+						</select>
+					</td>
+				</tr>
+				<tr valign="middle" height="50">
+					<td>
+						&nbsp;
+					</td>
+					<td align="left">
+						<br>
+						<input value="ENTER" name="Imagefield" type="submit"><br><br>
+					</td>
+				</tr>
+			</tbody></table>
+	</form>	

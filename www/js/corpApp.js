@@ -1,5 +1,11 @@
 
 var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.linkedin']);
+
+corpApp.constant('config',{
+	'API_URL' : 'http://turfje.nl/corpapp',
+	//'API_URL' : 'http://localhost/corpservice'
+});
+
 //routing
 corpApp.config(['$routeProvider',
   function($routeProvider) {
@@ -23,10 +29,27 @@ corpApp.config(['$httpProvider', function($httpProvider) {
     }
 ]);
   
-corpApp.controller('LoginController', function($scope, $http, Loginservice) {
+corpApp.controller('LoginController', function($scope, $http, $location, Loginservice, config) {
+	
+	$scope.username = "WVEELENT";
+	$scope.error = false;
 	
 	$scope.login = function(){
-		Loginservice.username = $scope.username;
+		
+		
+		var data = {
+			"username" : $scope.username,
+			"password"	: "1234"
+		}
+		$http.post(config.API_URL + '/auth/', data).
+		success(function(data, status, headers, config) {
+			Loginservice.username = $scope.username;
+			$location.path("/home");
+		}).
+		error(function(data, status, headers, config) {
+			$scope.list = {};
+			$scope.error = true;
+		});
 	};
 	
 });
@@ -37,7 +60,7 @@ corpApp.service('Loginservice', function () {
 
 });
 
-corpApp.controller('HomeController', function($scope, $http, Loginservice) {
+corpApp.controller('HomeController', function($scope, $http, $location, Loginservice, config) {
 		
 	$scope.color = function(i){
 	
@@ -50,21 +73,17 @@ corpApp.controller('HomeController', function($scope, $http, Loginservice) {
 				
 		return color[i % 4];
 	};
-
+		
 	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation", "linkedin"];
 	
-	$http({method: 'GET', url: 'http://192.168.101.192:8080/searchcontact/' + Loginservice.username}).
+	$http.get(config.API_URL + '/servicePeople?corpkey=' + Loginservice.username).
 	success(function(data, status, headers, config) {
-		// this callback will be called asynchronously
-		// when the response is available
-		$scope.item = data[0];
-
+	
+		Loginservice.username = data.corpkey
+		$scope.item = data;
 	}).
 	error(function(data, status, headers, config) {
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		$scope.list = {};
-			alert("Error");
+		$location.path("/");
 	});
 });
 

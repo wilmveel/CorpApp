@@ -16,26 +16,27 @@ contactModule.config(['$routeProvider',
 
 contactModule.controller('PeopleFinderController', function ($rootScope, $scope, $http, $location, $routeParams, PeopleDetailservice) {
 
-    $scope.list = PeopleDetailservice.getList();
+    $scope.list = [];
 
     $scope.search = function () {
 
-        var promise = PeopleDetailservice.search($scope.searchText);
-        promise.then(function(value) {
-            $scope.list = value;
-        }, function(reason) {
-            $scope.list = [];
-        }, function(update) {
-            $scope.list = [];
-        });
-
+		PeopleDetailservice.search($scope.searchText).then(
+		function(value) {
+			$scope.list = value.data;
+		}, 
+		function(reason) {
+			$scope.list = [];
+		}, 
+		function(update) {
+			$scope.list = [];
+		});
     };
 
     $scope.elasticSearch = function () {
         if ($scope.searchText.length > 3) {
             $scope.search();
         } else {
-            $scope.list = {};
+            $scope.list = [];
         }
     };
 
@@ -46,7 +47,8 @@ contactModule.controller('PeopleDetailController', function ($rootScope, $scope,
 
         var promise = PeopleDetailservice.getDetails($routeParams.contactId);
         promise.then(function(value) {
-            $scope.detail = value;
+            $scope.detail = value.data;
+			console.log(value);
         }, function(reason) {
             $scope.detail = {};
         }, function(update) {
@@ -58,7 +60,7 @@ contactModule.controller('PeopleDetailController', function ($rootScope, $scope,
     init();
 });
 
-contactModule.service('PeopleDetailservice', function ($http, $q) {
+contactModule.service('PeopleDetailservice', function ($http, $q, config) {
 
     var list = [];
 
@@ -67,49 +69,31 @@ contactModule.service('PeopleDetailservice', function ($http, $q) {
     };
 
     this.search = function(searchText){
-        var deferred = $q.defer();
+        		
+		return $http.get(config.API_URL + '/servicePeople?search=' + searchText).
+		success(function(data, status, headers, config) {
+			list = data;
+			return list;
+		}).error(function(data, status, headers, config) {
+			alert("cannot connect to server");
+			return [];
+		});
 
-        setTimeout(function() {
-            // since this fn executes async in a future turn of the event loop, we need to wrap
-            // our code into an $apply call so that the model changes are properly observed.
-            $http({method: 'GET', url: 'http://192.168.101.192:8080/searchContact/' + searchText}).
-                success(function (data, status, headers, config) {
-                    // this callback will be called asynchronously
-                    // when the response is available
-                    list = data;
-                    deferred.resolve(data);
-                }).
-                error(function (data, status, headers, config) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    list = [];
-                    deferred.resolve(list);
-                });
-        }, 5);
-
-        return deferred.promise;
     };
 
     this.getDetails = function(contactId){
         var deferred = $q.defer();
-
-        setTimeout(function() {
-            // since this fn executes async in a future turn of the event loop, we need to wrap
-            // our code into an $apply call so that the model changes are properly observed.
-            $http({method: 'GET', url: 'http://192.168.101.192:8080/contact/' + contactId}).
-                success(function (data, status, headers, config) {
-                    // this callback will be called asynchronously
-                    // when the response is available
-                    deferred.resolve(data);
-                }).
-                error(function (data, status, headers, config) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    deferred.resolve({});
-                });
-        }, 5);
-
-        return deferred.promise;
+		
+		var item = {};
+		
+		return $http.get(config.API_URL + '/servicePeople?corpkey=' + contactId).
+		success(function(data, status, headers, config) {
+			item = data;
+			return item;
+		}).error(function(data, status, headers, config) {
+			alert("cannot connect to server");
+			return null;
+		});
     };
  });
 
