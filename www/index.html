@@ -24,8 +24,8 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
 		
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Latest compiled and minified CSS -->	
+		<link rel="stylesheet" href="css/bootstrap.css">
 
         <link rel="stylesheet" type="text/css" href="css/corpApp.css" />
         <link rel="stylesheet" type="text/css" href="css/capgemini.css" class="theme" />
@@ -39,8 +39,8 @@
         <div class="navbar navbar-fixed-top">
 			<div class="container header" ng-controller="mainCtrl">
 				<div class="row row-medium	">
-					<div class="col-xs-3 col-sm-2 col-md-1 block logo" ng-click="changeTheme()"></div>
-					<div class="col-xs-9 col-sm-10 col-md-11 block block-color2 date">
+					<div class="col-xs-3 col-ys-2 col-sm-2 col-md-1 block logo" ng-click="changeTheme()"></div>
+					<div class="col-xs-9 col-ys-10  col-sm-10 col-md-11 block block-color2 date">
 						<span class="day">Zaterdag</span>
 						<span class="day">25 januari</span>
 					</div>
@@ -55,9 +55,9 @@
 		 <div class="navbar navbar-fixed-bottom">
 			<div class="container footer">
 				<div class="row row-medium">
-					<div class="col-xs-3 block block-color1"><a class="button button-back" href="javascript:history.go(-1)"></a></div>
-					<div class="col-xs-6 block block-color0"><a class="button button-menu" href="#/home"></a></div>
-					<div class="col-xs-3 block block-color2"><a class="button button-logoff" href="#/login"></a></div>
+					<div class="col-xs-3 col-ys-2 col-sm-2 col-md-1 block block-color1"><a class="button button-back" href="javascript:history.go(-1)"></a></div>
+					<div class="col-xs-6 col-ys-8 col-sm-8 col-md-10 block block-color0"><a class="button button-menu" href="#/home"></a></div>
+					<div class="col-xs-3 col-ys-2 col-sm-2 col-md-1 block block-color2"><a class="button button-logoff" href="#/login"></a></div>
 				</div>
 			</div>
 		</div>
@@ -76,6 +76,7 @@
 		<script type="text/javascript" src="module/expenses/module.js"></script>
 		<script type="text/javascript" src="module/coach/module.js"></script>
 		<script type="text/javascript" src="module/carpool/module.js"></script>
+		<script type="text/javascript" src="module/linkedin/module.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>

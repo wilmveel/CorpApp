@@ -6,11 +6,9 @@
 
 <div class="row row-large">
     <img class="photo-block block contact contact-large col-xs-6 photo"
-         ng-src="http://www.familieslager.nl/capathon/{{detail.photo}}" width="75px" height="75px"/>
+         ng-src="{{detail.pictureUrl}}" width="75px" height="75px"/>
 
-    <div class="block contact text-format contact-large col-xs-6 name-personal-detail">{{detail.firstname}}
-        {{detail.tussenvoegsel}} {{detail.lastname}}
-    </div>
+    <div class="block contact text-format contact-large col-xs-6 name-personal-detail">{{detail.firstName}} {{detail.lastName}}</div>
 
 </div>
 <div class="row">
