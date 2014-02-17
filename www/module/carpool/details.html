@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-xs-12 block block-title block-title-coaching">Coaching</div>
+</div>
+
+<div class="row">
+	<div class="block block-form">
+		<table class="table" width="100%">
+			<tbody>
+				<tr>
+					<th>Name:</th>
+					<td>{{detail.firstname}} {{detail.tussenvoegsel}}  {{detail.lastname}}</td>
+				</tr>
+				<tr>
+					<th>Practice:</th>
+					<td>{{detail.practice}}</td>
+				</tr>
+				<tr>
+					<th>Sector:</th>
+					<td>{{detail.sector}}</td>
+				</tr>
+				<tr>
+					<th>Email:</th>
+					<td>{{detail.email}}</td>
+				</tr>
+				<tr>
+					<th>mobile:</th>
+					<td>{{detail.telephone}}</td>
+				</tr>
+				<tr>
+					<th>Residence:</th>
+					<td>{{detail.residence}}</td>
+				</tr>
+				<tr>
+					<th>Worklocation:</th>
+					<td>{{detail.worklocation}}</td>
+				</tr>
+				<tr><th>skill:</th></tr>
+				<tr ng-repeat="skill in detail.expertise">
+					<td></td>
+					<td>{{skill}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+

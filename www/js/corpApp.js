@@ -1,5 +1,5 @@
 
-var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach']);
+var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool']);
 //routing
 corpApp.config(['$routeProvider',
   function($routeProvider) {
@@ -51,7 +51,7 @@ corpApp.controller('HomeController', function($scope, $http, Loginservice) {
 		return color[i % 4];
 	};
 
-	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation"];
+	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool"];
 	
 	$http({method: 'GET', url: 'http://192.168.101.192:8080/searchcontact/' + Loginservice.username}).
 	success(function(data, status, headers, config) {
