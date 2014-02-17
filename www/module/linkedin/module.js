@@ -13,7 +13,7 @@ expensesModule.config(['$routeProvider',
 
 
 
-expensesModule.controller('IndexController', function($scope, $http, config, Loginservice) {
+expensesModule.controller('IndexController', function($scope, $http, $location, config, Loginservice) {
 
 	$http.get(config.API_URL + '/serviceLinkedin?corpkey=' + Loginservice.username).
 	success(function(data, status, headers, config) {
