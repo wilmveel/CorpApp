@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-xs-12 block block-title ">Connect to Capgemini network</div>
+</div>
+
+<div class="row" ng-hide="authorized()">
+	
+		<a class="btn btn-default btn-block" href="" ng-click="authorize()" ng>Login</a>
+
+</div>
+
+<div class="row" ng-hide="authorized()">
+	<input ng-model="token"><a href="" ng-click="setToken()">Set</a>
+</div>
+<div class="row" ng-show="authorized()">
+	<div class="col-xs-12 block block-white">
+		Username: {{session.username}}</br>
+		Access token: {{token}}</br>
+	</div>
+</div>

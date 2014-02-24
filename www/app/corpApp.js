@@ -1,4 +1,4 @@
-var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool', 'corpApp.linkedin']);
+var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool', 'corpApp.linkedin', 'corpApp.authorize']);
 
 corpApp.constant('config',{
 	'API_URL' : 'http://turfje.nl/corpapp',
@@ -27,6 +27,23 @@ corpApp.config(['$httpProvider', function($httpProvider) {
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
 ]);
+
+corpApp.run(function($http, $log, $location, authorizeService) {
+
+	if(authorizeService.hasToken()){
+		authorizeService.validateToken().then(function(data){
+			$log.debug("Validate token: ", data);
+			$location.path("/home");
+		},function(data){
+			$log.debug("Validate token: ", data);
+			authorizeService.removeToken();
+			$location.path("/module/authorize");
+		})
+	}else{
+		$log.debug("No token found");
+		$location.path("/module/authorize");
+	}
+});
   
 corpApp.controller('LoginController', function($scope, $http, $location, Loginservice, config) {
 	
@@ -73,17 +90,8 @@ corpApp.controller('HomeController', function($scope, $http, $location, Loginser
 		return color[i % 4];
 	};
 
-	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool", "linkedin"];
+	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool", "linkedin", "authorize"];
 	
-	$http.get(config.API_URL + '/servicePeople?corpkey=' + Loginservice.username).
-	success(function(data, status, headers, config) {
-	
-		Loginservice.username = data.corpkey
-		$scope.item = data;
-	}).
-	error(function(data, status, headers, config) {
-		$location.path("/");
-	});
 });
 
 corpApp.controller('ModuleController', function($scope, $http) {
