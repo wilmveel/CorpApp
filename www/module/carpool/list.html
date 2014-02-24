@@ -4,10 +4,10 @@
 
 <div class="row">
 	<div class="block block-form">
-		<form role="form" >
+		<form role="form">
 			<div class="form-group">
-				<input type="label" class="form-control input-lg" placeholder="From location" ng-model="From location" autofocus="autofocus" />
-				<input type="label" class="form-control input-lg" placeholder="To location" ng-model="To location" autofocus="autofocus" />
+				<input type="label" class="form-control input-lg" placeholder="From location" ng-model="fromLocation" autofocus="autofocus" />
+				<input type="label" class="form-control input-lg" placeholder="To location" ng-model="toLocation" autofocus="autofocus" />
 			</div>
 			
 			<div class="form-group">
@@ -17,15 +17,14 @@
 				</div>
 			</div>
 			
-			<div class="alert alert-success" ng-model = status ng-show="status == true">Sorry could not find.</div>
+			<div class="alert alert-success">Sorry could not find.</div>
 		</form>
 	</div>
 </div>
+
 <div class="row">
-	<div class="contact" ng-repeat="item in list">
-		<img class="photo" ng-src="http://www.familieslager.nl/capathon/{{item.photo}}" width="75px" height="75px" />
-		<a class="name" href="#/module/coach/Details/{{item._id}}">{{item.firstname}} {{item.lastname}}</a>
-		<a class="phone" ng-href="tel:{{item.telephone}}">{{item.telephone}}</a> 
+	<div class="block block-form" ng-repeat="item in list">
+		<div>{{item.from}}</div>
+		<div>{{item.to}}</div>
 	</div>
 </div>
-
