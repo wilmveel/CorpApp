@@ -1,4 +1,4 @@
-var carpoolModule = angular.module('corpApp.carpool', ['ngRoute']);
+var carpoolModule = angular.module('corpApp.carpool', ['ngRoute','ngAutocomplete']);
 
 //routing
 carpoolModule.config(['$routeProvider',
@@ -7,7 +7,11 @@ carpoolModule.config(['$routeProvider',
         when('/module/carpool', {
             templateUrl: 'module/carpool/list.html',
             controller: 'CarpoolController'
-        });
+        }).
+        when('/module/carpool/advanced', {
+            templateUrl: 'module/carpool/advanced.html',
+            controller: 'CarpoolController'
+        })
     }
 ]);
 
@@ -49,5 +53,10 @@ carpoolModule.controller('CarpoolController', function($scope, $http, $filter, c
 		alert("From: "+$scope.fromLocation+"<br />To:"+$scope.toLocation);
 	};
 
- 
+	$scope.goSimple = function(){
+		window.location.href = "#/module/carpool";
+	};
+	$scope.goAdvanced = function(){
+		window.location.href = "#/module/carpool/advanced";
+	};
 });
