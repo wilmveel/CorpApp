@@ -1,4 +1,4 @@
-var authorizeModule = angular.module('corpApp.authorize', ['ngRoute']);
+	var authorizeModule = angular.module('corpApp.authorize', ['ngRoute']);
 
 //routing
 authorizeModule.config(['$routeProvider',
@@ -11,8 +11,49 @@ authorizeModule.config(['$routeProvider',
 	}
 ]);
 
-authorizeModule.service('authorizeService', function($log, $http, $q) {
+authorizeModule.factory('httpRequestInterceptor', function () {
+  return {
+    request: function (config) {
+      var token = localStorage.getItem("access_token");
+      config.url =  config.url + '?access_token=' + token;
+      return config;
+    }
+  };
+});
 
+authorizeModule.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('httpRequestInterceptor');
+});
+
+authorizeModule.run(function($http, $log, $location, authorizeService) {
+
+	if(authorizeService.hasToken()){
+		authorizeService.validateToken().then(function(data){
+			$log.debug("Validate token: ", data);
+			$location.path("/home");
+		},function(data){
+			$log.debug("Validate token: ", data);
+			authorizeService.removeToken();
+			//$location.path("/module/authorize");
+		})
+	}else{
+		var url = $location.url();
+		var access_token = url.match(/access_token=([^\&]+)/)
+        if (access_token){
+			access_token = access_token[1];
+			authorizeService.setToken(access_token);
+			window.opener.location.reload(false);
+			//window.close();
+		}else{
+			$log.debug("No token found");
+			$location.path("/module/authorize");
+		}
+	}
+});
+
+authorizeModule.service('authorizeService', function($log, $http, $q, config) {
+
+	this.username;
 	this.access_token = localStorage.getItem("access_token");
 	
 	this.hasToken = function(){
@@ -27,22 +68,24 @@ authorizeModule.service('authorizeService', function($log, $http, $q) {
 		return this.access_token;
 	}
 	
+	this.setToken = function(access_token){
+		this.access_token = access_token;
+		localStorage.setItem("access_token", access_token);
+	}
+	
 	this.removeToken = function(){
 		localStorage.removeItem("access_token");
 	}
 	
 	this.validateToken = function(){
-		return $http.get('http://localhost:8080/sparklr2/rest/token', {
-			params: {
-				access_token: this.access_token
-			}
-		}).
-		success(function(data, status, headers, config) {
+	
+		return this.getUser().then(function(data) {
 			$log.debug("Connected to server open for connection");
-			return "OK";
-		}).
-		error(function(data, status, headers, config) {
-			if(status == 401){
+			$log.debug("User", data);
+			return data;
+		},function(response) {
+			$log.debug("Cannot validate!");
+			if(response.status == 401){
 				$log.debug("Unauthorized");
 				localStorage.removeItem("access_token");
 				return "UNAUTHORIZED";
@@ -53,31 +96,42 @@ authorizeModule.service('authorizeService', function($log, $http, $q) {
 			}
 		});
 	}
+	
+	this.getUser = function(){
+		return $http.get(config.API_URL + '/rest/token', {
+			params: {
+				access_token: this.access_token
+			}
+		}).
+		success(function(data, status, headers, config) {
+			$log.debug("Connected to server open for connection");
+			$log.debug("User", data);
+			return data;
+		}).error(function(response){
+			$log.error("Not able to get token");
+			return response;
+		});
+	}
 });
 
-authorizeModule.controller('authorizeController', function($scope, $http, $log, $location, authorizeService) {
+authorizeModule.controller('authorizeController', function($scope, $http, $log, $location, authorizeService, config) {
 	
 	var windowRef;
 	
-	var baseUrl = "http://localhost:8080/sparklr2";
 	var clientId = "corpapp";
 	var secret = "secret";
+	var redirectUrl = "http://localhost/corpapp/#/module/authorize";
+	
 	
 	$scope.token = authorizeService.getToken();
+	if(authorizeService.hasToken()){
+		authorizeService.getUser().then(function(response){
+			$log.debug("User from controller: ", response.data);
+			$scope.username = response.data.username;
+		});
+	}
 	
-	// init
-	$scope.session = 
-	$http.get(baseUrl + '/rest/token', {
-		params: {
-			access_token: authorizeService.access_token
-		}
-	}).
-	success(function(data, status, headers, config) {
-		$scope.session = data;
-	}).
-	error(function(data, status, headers, config) {
-		$log.error("cannot load session data");
-	});
+ 
 	
 	$scope.authorized = function(){
 		return authorizeService.hasToken();
@@ -91,11 +145,14 @@ authorizeModule.controller('authorizeController', function($scope, $http, $log, 
 	
 	// Open popup to connect to capgemini
 	$scope.authorize = function(){
-		var url = baseUrl + "/oauth/authorize?response_type=token";
+		var url = config.API_URL + "/oauth/authorize?response_type=token";
 		url += "&client_id=" + clientId;
+		url += "&redirect_uri=" + redirectUrl;
 		windowRef = window.open(url, '_blank', 'location=no');
 		windowRef.addEventListener('loadstop', loadstop);
 	}
+	
+	
 	
 	// Listen on window and get information from url
 	function loadstop(event) {

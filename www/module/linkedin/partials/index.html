@@ -14,19 +14,22 @@
 	</div>
 	
 	<div class="row row-large" ng-show="item" >
-		<div class="col-xs-6 col-ys-4 col-sm-3 col-md-2 block block-white">
-			<img height="150" ng-show="item.pictureUrl" class="menu-picture photo-block" ng-src="{{item.pictureUrl}}" />
+		<div class="col-xs-6 col-ys-4 col-sm-3 col-md-2 block block-image">
+			<img ng-show="item.pictureUrl" class="menu-picture photo-block" ng-src="{{item.pictureUrl}}" />
 			<img ng-hide="item.pictureUrl" class="menu-picture photo-block" src="http://www.familieslager.nl/capathon/lion2.jpg" />
 		</div>
 		<div class="col-xs-6 col-ys-8 col-sm-9 col-md-10 block block-color1">
-			<h2>{{item.headline}}</h2>
+			<h3>{{item.headline}}</h3>
 		</div>
 		
 	</div>
 	
-	<div class="row row-large" ng-show="item" >
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="skill in item.skills.values">{{skill.skill.name}}</li>
-		</ul>
+	<div class="row">
+		<div class="col-xs-12 block" style="margin:0px;padding: 0px;">
+			<ul class="list-group" style="margin:0px;padding: 0px;">
+				<li class="list-group-item" ng-repeat="skill in item.skills">{{skill}}</li>
+			</ul>
+		</div>
 	</div>
+
 </div>

@@ -13,9 +13,9 @@ expensesModule.config(['$routeProvider',
 
 
 
-expensesModule.controller('IndexController', function($scope, $http, $location, config, Loginservice) {
+expensesModule.controller('IndexController', function($scope, $http, $location, config) {
 
-	$http.get(config.API_URL + '/serviceLinkedin?corpkey=' + Loginservice.username).
+	$http.get(config.API_URL + '/rest/linkedin/me').
 	success(function(data, status, headers, config) {
 		$scope.item = data;
 	}).
@@ -47,7 +47,7 @@ expensesModule.controller('IndexController', function($scope, $http, $location, 
 	   if(event.url.indexOf(redirectUrl) == 0){
 			iabRef.close();
 			
-			$http.get(config.API_URL + '/serviceLinkedin?corpkey=' + Loginservice.username).
+			$http.get(config.API_URL + '/rest/linkedin/me').
 			success(function(data, status, headers, config) {
 				$scope.item = data;
 			}).

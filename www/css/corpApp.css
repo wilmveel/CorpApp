@@ -55,6 +55,16 @@ body {
 	padding: 10px;
 }
 
+.block-image {
+	overflow: hidden;
+	margin:0px;
+	padding:0px;
+}
+
+.block-image img {
+	width: 100%;
+}
+
 /* footer */
 .block-title {
 	height:75px;

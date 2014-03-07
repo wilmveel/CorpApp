@@ -1,24 +1,20 @@
-var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool', 'corpApp.linkedin', 'corpApp.authorize']);
+var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool', 'corpApp.linkedin', 'corpApp.authorize', 'corpApp.test']);
 
 corpApp.constant('config',{
-	'API_URL' : 'http://turfje.nl/corpapp',
-	//'API_URL' : 'http://localhost/corpservice'
+	'API_URL' : 'http://corpapp.herokuapp.com',
+	//'API_URL' : 'http://localhost:8080/corpapi'
 });
 
 //routing
 corpApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/login', {
-        templateUrl: 'partials/login.html',
-        controller: 'LoginController'
-      }).
 	  when('/home', {
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
       }).
       otherwise({
-        redirectTo: '/login'
+        redirectTo: '/home'
       });
   }]);
   
@@ -28,55 +24,7 @@ corpApp.config(['$httpProvider', function($httpProvider) {
     }
 ]);
 
-corpApp.run(function($http, $log, $location, authorizeService) {
-
-	if(authorizeService.hasToken()){
-		authorizeService.validateToken().then(function(data){
-			$log.debug("Validate token: ", data);
-			$location.path("/home");
-		},function(data){
-			$log.debug("Validate token: ", data);
-			authorizeService.removeToken();
-			$location.path("/module/authorize");
-		})
-	}else{
-		$log.debug("No token found");
-		$location.path("/module/authorize");
-	}
-});
-  
-corpApp.controller('LoginController', function($scope, $http, $location, Loginservice, config) {
-	
-	$scope.username = "WVEELENT";
-	$scope.error = false;
-	
-	$scope.login = function(){
-		
-		
-		var data = {
-			"username" : $scope.username,
-			"password"	: "1234"
-		}
-		$http.post(config.API_URL + '/auth/', data).
-		success(function(data, status, headers, config) {
-			Loginservice.username = $scope.username;
-			$location.path("/home");
-		}).
-		error(function(data, status, headers, config) {
-			$scope.list = {};
-			$scope.error = true;
-		});
-	};
-	
-});
-
-corpApp.service('Loginservice', function () {
-
-    var username;
-
-});
-
-corpApp.controller('HomeController', function($scope, $http, $location, Loginservice, config) {
+corpApp.controller('HomeController', function($scope, $http, $location, $timeout, config) {
 		
 	$scope.color = function(i){
 	
@@ -89,9 +37,10 @@ corpApp.controller('HomeController', function($scope, $http, $location, Loginser
 				
 		return color[i % 4];
 	};
-
-	$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool", "linkedin", "authorize"];
-	
+	$scope.modules = [];
+	$timeout(function() {
+		$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool", "linkedin", "authorize", "test"];
+	}, 500);
 });
 
 corpApp.controller('ModuleController', function($scope, $http) {
