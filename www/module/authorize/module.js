@@ -25,25 +25,27 @@ authorizeModule.config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpRequestInterceptor');
 });
 
+/** Check wheter the token is vailid if not vailid remove from service and rout to login page */
 authorizeModule.run(function($http, $log, $location, authorizeService) {
 
 	if(authorizeService.hasToken()){
 		authorizeService.validateToken().then(function(data){
-			$log.debug("Validate token: ", data);
+			$log.debug("Token vailid: ", data);
 			$location.path("/home");
 		},function(data){
-			$log.debug("Validate token: ", data);
+			$log.debug("Token invailid: ", data);
 			authorizeService.removeToken();
-			//$location.path("/module/authorize");
+			$location.path("/module/authorize");
 		})
 	}else{
 		var url = $location.url();
 		var access_token = url.match(/access_token=([^\&]+)/)
+		// get token form url and set to service
         if (access_token){
 			access_token = access_token[1];
 			authorizeService.setToken(access_token);
 			window.opener.location.reload(false);
-			//window.close();
+			window.close();
 		}else{
 			$log.debug("No token found");
 			$location.path("/module/authorize");
@@ -53,11 +55,12 @@ authorizeModule.run(function($http, $log, $location, authorizeService) {
 
 authorizeModule.service('authorizeService', function($log, $http, $q, config) {
 
-	this.username;
-	this.access_token = localStorage.getItem("access_token");
+	var corpKey = null;
+	var userName = null;
+	var accessToken = localStorage.getItem("access_token");
 	
 	this.hasToken = function(){
-		if(this.access_token === null){
+		if(accessToken === null){
 			return false;
 		}else{
 			return true;
@@ -65,24 +68,32 @@ authorizeModule.service('authorizeService', function($log, $http, $q, config) {
 	}
 	
 	this.getToken = function(){
-		return this.access_token;
+		return accessToken;
 	}
 	
 	this.setToken = function(access_token){
-		this.access_token = access_token;
-		localStorage.setItem("access_token", access_token);
+		accessToken = access_token;
+		localStorage.setItem("access_token", accessToken);
 	}
 	
 	this.removeToken = function(){
 		localStorage.removeItem("access_token");
 	}
+
+	this.getUserName = function(){
+		return userName;
+	}
+
+	this.getCorpKey = function(){
+		return corpKey;
+	}
 	
 	this.validateToken = function(){
-	
-		return this.getUser().then(function(data) {
-			$log.debug("Connected to server open for connection");
-			$log.debug("User", data);
-			return data;
+		$log.debug("validateToken");
+		return this.getUser().then(function(response) {
+			corpKey = response.data.username.toUpperCase();
+			userName = response.data.username;
+			return response;
 		},function(response) {
 			$log.debug("Cannot validate!");
 			if(response.status == 401){
@@ -98,16 +109,11 @@ authorizeModule.service('authorizeService', function($log, $http, $q, config) {
 	}
 	
 	this.getUser = function(){
-		return $http.get(config.API_URL + '/rest/token', {
-			params: {
-				access_token: this.access_token
-			}
-		}).
-		success(function(data, status, headers, config) {
-			$log.debug("Connected to server open for connection");
-			$log.debug("User", data);
-			return data;
-		}).error(function(response){
+		return $http.get(config.API_URL + '/rest/token').
+		then(function(response) {
+			$log.debug("getUser", response);
+			return response;
+		},function(response){
 			$log.error("Not able to get token");
 			return response;
 		});
@@ -123,14 +129,9 @@ authorizeModule.controller('authorizeController', function($scope, $http, $log, 
 	var redirectUrl = "http://localhost/corpapp/#/module/authorize";
 	
 	
-	$scope.token = authorizeService.getToken();
-	if(authorizeService.hasToken()){
-		authorizeService.getUser().then(function(response){
-			$log.debug("User from controller: ", response.data);
-			$scope.username = response.data.username;
-		});
-	}
-	
+	$scope.accessToken = authorizeService.getToken();
+	$scope.corpKey = authorizeService.getCorpKey();
+	$scope.userName = authorizeService.getUserName();	
  
 	
 	$scope.authorized = function(){

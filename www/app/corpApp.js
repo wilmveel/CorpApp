@@ -1,11 +1,12 @@
 var corpApp = angular.module('corpApp', ['ngRoute', 'corpApp.PeopleFinder', 'corpApp.departments', 'corpApp.presentation', 'corpApp.profile', 'corpApp.expenses', 'corpApp.coach', 'corpApp.carpool', 'corpApp.linkedin', 'corpApp.authorize', 'corpApp.test']);
 
+/** Constantes */
 corpApp.constant('config',{
-	'API_URL' : 'http://corpapp.herokuapp.com',
+	'API_URL' : 'https://corpapp.herokuapp.com',
 	//'API_URL' : 'http://localhost:8080/corpapi'
 });
 
-//routing
+/** Routing for the main app */
 corpApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -18,6 +19,7 @@ corpApp.config(['$routeProvider',
       });
   }]);
   
+/** Cross side scripting. */
 corpApp.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -37,20 +39,28 @@ corpApp.controller('HomeController', function($scope, $http, $location, $timeout
 				
 		return color[i % 4];
 	};
-	$scope.modules = [];
-	$timeout(function() {
-		$scope.modules = ["PeopleFinder", "expenses", "coach", "departments", "presentation","carpool", "linkedin", "authorize", "test"];
-	}, 500);
+
+  //Load linkedin profile
+  $http.get(config.API_URL + '/rest/linkedin/me').
+  success(function(data, status, headers, config) {
+    $scope.user = data;
+  });
+		
+  $scope.modules = [
+    "PeopleFinder", 
+    "expenses", 
+    "coach", 
+    "departments", 
+    "presentation",
+    "carpool", 
+    "linkedin", 
+    "authorize", 
+    "test"
+  ];
+
 });
 
-corpApp.controller('ModuleController', function($scope, $http) {
-	
-	$scope.test = "test";
-	 
-});
-
-
-
+/** Main controller for look and feel */
 corpApp.controller('mainCtrl', function($scope) {
     $scope.changeTheme = function() {
       var linkEls = document.querySelectorAll('link.theme');

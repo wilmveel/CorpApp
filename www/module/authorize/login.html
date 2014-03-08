@@ -1,14 +1,19 @@
 <div class="row">
-	<div class="col-xs-12 block block-title ">Connect to Capgemini network</div>
+	<div class="col-xs-12 block block-title ">Connect to Capgemini</div>
 </div>
 
 <div class="row" ng-hide="authorized()" ng-hide="authorized()" >
-	<a class="btn btn-default btn-block" href="" ng-click="authorize()">Login</a>
+	<a class="btn btn-lg btn-default btn-block" href="" ng-click="authorize()">
+		<span class="glyphicon glyphicon-lock"></span> Connect
+	</a>
 </div>
 
 <div class="row" ng-show="authorized()">
-	<div class="col-xs-12 block block-white">
-		Username: {{username}}</br>
-		Access token: {{token}}</br>
+	<div class="col-xs-12 block" style="margin:0px;padding: 0px;">
+		<ul class="list-group">
+		  <li class="list-group-item"><strong>Corpkey:</strong> {{corpKey}}</li>
+		  <li class="list-group-item"><strong>Username:</strong> {{userName}}</li>
+		  <li class="list-group-item"><strong>Access token:</strong> {{accessToken}}</li>
+		</ul>
 	</div>
 </div>

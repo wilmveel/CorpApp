@@ -24,7 +24,7 @@ expensesModule.controller('IndexController', function($scope, $http, $location, 
 	});
 	
 	var clientId = "7714w3q3mqlrro";
-	var redirectUrl = config.API_URL + "/linkedinConnect";
+	var redirectUrl = config.API_URL + "/rest/linkedin/connect";
 	var state = "123456789";
 		
 	// Open popup to connect to linkedin
